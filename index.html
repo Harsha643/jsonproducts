@@ -126,6 +126,11 @@ body {
     margin: 0 auto;
   }
 }
+
+#nameError, #imageError, #decriptionError, #priceError{
+
+    color: red;
+}
     </style>
 </head>
 <body>
@@ -137,9 +142,9 @@ body {
         <input type="text"  placeholder='image URL' id="image" required autocomplete="off">
         <div id="imageError"></div>
         <input type="text"  placeholder='Description' id="des" required autocomplete="off">
-        <div id="DescriptionError"></div>
+        <div id="descriptionError"></div>
         <input type="text"  placeholder='rating' id="rate" required autocomplete="off">
-        <div id="RateError"></div>
+        <div id="rateError"></div>
         <input type="text"  placeholder='price' id="price" required autocomplete="off">
         <div id="priceError"></div>
         <button onclick="saveData()" >Save the Data</button>

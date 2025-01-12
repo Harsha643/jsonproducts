@@ -1,19 +1,20 @@
 
 async function fetchData() {
-    let loader=document.createElement("div")
+    // let loader=document.createElement("div")
     let response=await fetch("https://brick-tourmaline-case.glitch.me/products")
     try{
         if(!response.ok){
             throw new Error(response.statusText)
         }
         let data=await response.json()
-        if(datalength===0){
-            loader.innerText="DATA IS NOT AVIALABLE"
-            document.body.appendChild(loader)
+        // if(data.length===0){
+        //     loader.innerText="DATA IS NOT AVIALABLE"
+        //     document.body.appendChild(loader)
 
-        }else{
+        // }else{
+        // displayData(data)
+        // }
         displayData(data)
-        }
     }catch(error){
         alert("data is fetch to failed")
         console.error(error)
@@ -108,8 +109,30 @@ function vaildateInput(){
     let productName=document.getElementById("name").value
     let image=document.getElementById("image").value
     let des=document.getElementById("des").value
-    let rate=document.getElementById("rate").value
+ 
     let price=document.getElementById("price").value
+
+    let productNameError=document.getElementById("nameError")
+    productNameError=productName? "" :"Name is required";
+
+     let imageError=document.getElementById("imageError")
+    imageError=image? "":"imageis required";
+
+     let desError=document.getElementById("discriptionError")
+    desError=des?"":" description is required";
+
+     let priceError=document.getElementById("priceError")
+    priceError=price?"":"Price is required";
+    
+    if(!productName || !image){
+        return false;
+
+    }else if(!price || !des){
+        return false ;
+
+    }else{
+        return true;
+    }
 
 }
 
@@ -117,9 +140,6 @@ function vaildateInput(){
 async function saveData() {
     
            if(!vaildateInput()) return;
-
-
-
     let productId=document.getElementById("id").value
     let productName=document.getElementById("name").value
     let image=document.getElementById("image").value
