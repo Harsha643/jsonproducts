@@ -3,9 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin</title>
+    <style>
+        /* General body styling */
+body {
+  background-color: rgb(240, 248, 255); /* Alice Blue background */
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Styling for the form container */
+.container-1 {
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgb(255, 255, 255); /* White background */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* Input and button styling */
+.container-1 input,
+.container-1 button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.container-1 button {
+  background-color: rgb(70, 130, 180); /* Steel Blue */
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.container-1 button:hover {
+  background-color: rgb(65, 105, 225); /* Royal Blue */
+}
+
+/* Styling for the product container */
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  padding: 20px;
+  width: 90%;
+}
+
+/* Individual product card styling */
+#container div {
+  width: calc(100% - 40px);
+  max-width: 300px;
+  background-color: rgb(255, 255, 255);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+#container div:hover {
+  transform: translateY(-5px);
+}
+
+/* Text styling inside product cards */
+#container p {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: rgb(60, 60, 60); /* Dark Gray */
+}
+
+/* Buttons inside product cards */
+#container button {
+  margin: 5px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+#container button#deleteBtn {
+  background-color: rgb(255, 69, 58); /* Red */
+  color: white;
+}
+
+#container button#deleteBtn:hover {
+  background-color: rgb(200, 55, 50);
+}
+
+#container button#editBtn {
+  background-color: rgb(34, 139, 34); /* Forest Green */
+  color: white;
+}
+
+#container button#editBtn:hover {
+  background-color: rgb(30, 120, 30);
+}
+
+/* Responsive design for smaller devices */
+@media (max-width: 768px) {
+  .container-1 {
+    width: 100%;
+    padding: 15px;
+  }
+
+  #container div {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+    </style>
 </head>
 <body>
+    
+    <div class="container-1">
+        <input type="hidden" id="id">
+        <input type="text" placeholder="name" id="name" required  >
+        <input type="text"  placeholder='image URL' id="image" required>
+        <input type="text"  placeholder='Description' id="des" required>
+        <input type="text"  placeholder='rating' id="rate" required>
+        <input type="text"  placeholder='price' id="price" required>
+        <button onclick="saveData()" >Save the Data</button>
+    </div>
+    <div id="container"></div>
     <script src="index.js"></script>
     
 </body>
