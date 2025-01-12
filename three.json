@@ -2,6 +2,7 @@
     "products" : [
 
  {
+   "id":"1",
     "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhqVrXTH_kH8FDdf20gi7pERoYpjM_EpaYnQ&s",
     "product name":"Medical product",
     "description":"Alan Electronic Systems Private Limited is a well established company in the field of Industrial Electronics with excellent growth. Alan enjoys substantial Market Share for its specialized products such as Micro-Controller based embedded systems, Power Electronics & Electro-Medical Systems. After successfully catering to competitive industrial market, ALAN launched its Medical Division in the year 2004. The first product of this division was Surgical Diathermy of International Standard.",
@@ -9,6 +10,7 @@
     "rate":"4.1"
  },
  {
+   "id":"2",
     "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhqVrXTH_kH8FDdf20gi7pERoYpjM_EpaYnQ&s",
     "product name":"Medical product",
     "description":"Alan Electronic Systems Private Limited is a well established company in the field of Industrial Electronics with excellent growth. Alan enjoys substantial Market Share for its specialized products such as Micro-Controller based embedded systems, Power Electronics & Electro-Medical Systems. After successfully catering to competitive industrial market, ALAN launched its Medical Division in the year 2004. The first product of this division was Surgical Diathermy of International Standard.",
@@ -16,6 +18,7 @@
     "rate":"4.1"
  },
  {
+   "id":"3",
     "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhqVrXTH_kH8FDdf20gi7pERoYpjM_EpaYnQ&s",
     "product name":"Medical product",
     "description":"Alan Electronic Systems Private Limited is a well established company in the field of Industrial Electronics with excellent growth. Alan enjoys substantial Market Share for its specialized products such as Micro-Controller based embedded systems, Power Electronics & Electro-Medical Systems. After successfully catering to competitive industrial market, ALAN launched its Medical Division in the year 2004. The first product of this division was Surgical Diathermy of International Standard.",
@@ -23,6 +26,7 @@
     "rate":"4.1"
  },
  {
+      "id":"4",
     "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhqVrXTH_kH8FDdf20gi7pERoYpjM_EpaYnQ&s",
     "product name":"Medical product",
     "description":"Alan Electronic Systems Private Limited is a well established company in the field of Industrial Electronics with excellent growth. Alan enjoys substantial Market Share for its specialized products such as Micro-Controller based embedded systems, Power Electronics & Electro-Medical Systems. After successfully catering to competitive industrial market, ALAN launched its Medical Division in the year 2004. The first product of this division was Surgical Diathermy of International Standard.",
@@ -30,6 +34,7 @@
     "rate":"4.1"
  },
  {
+      "id":"5",
     "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhqVrXTH_kH8FDdf20gi7pERoYpjM_EpaYnQ&s",
     "product name":"Medical product",
     "description":"Alan Electronic Systems Private Limited is a well established company in the field of Industrial Electronics with excellent growth. Alan enjoys substantial Market Share for its specialized products such as Micro-Controller based embedded systems, Power Electronics & Electro-Medical Systems. After successfully catering to competitive industrial market, ALAN launched its Medical Division in the year 2004. The first product of this division was Surgical Diathermy of International Standard.",
@@ -37,6 +42,7 @@
     "rate":"4.1"
  },
  {
+      "id":"6",
    "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhqVrXTH_kH8FDdf20gi7pERoYpjM_EpaYnQ&s",
    "product name":"Medical product",
    "description":"Alan Electronic Systems Private Limited is a well established company in the field of Industrial Electronics with excellent growth. Alan enjoys substantial Market Share for its specialized products such as Micro-Controller based embedded systems, Power Electronics & Electro-Medical Systems. After successfully catering to competitive industrial market, ALAN launched its Medical Division in the year 2004. The first product of this division was Surgical Diathermy of International Standard.",
@@ -44,6 +50,7 @@
    "rate":"4.1"
 },
 {
+   "id":"7",
    "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhqVrXTH_kH8FDdf20gi7pERoYpjM_EpaYnQ&s",
    "product name":"Medical product",
    "description":"Alan Electronic Systems Private Limited is a well established company in the field of Industrial Electronics with excellent growth. Alan enjoys substantial Market Share for its specialized products such as Micro-Controller based embedded systems, Power Electronics & Electro-Medical Systems. After successfully catering to competitive industrial market, ALAN launched its Medical Division in the year 2004. The first product of this division was Surgical Diathermy of International Standard.",
@@ -51,6 +58,7 @@
    "rate":"4.1"
 },
 {
+   "id":"8",
    "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhqVrXTH_kH8FDdf20gi7pERoYpjM_EpaYnQ&s",
    "product name":"Medical product",
    "description":"Alan Electronic Systems Private Limited is a well established company in the field of Industrial Electronics with excellent growth. Alan enjoys substantial Market Share for its specialized products such as Micro-Controller based embedded systems, Power Electronics & Electro-Medical Systems. After successfully catering to competitive industrial market, ALAN launched its Medical Division in the year 2004. The first product of this division was Surgical Diathermy of International Standard.",
@@ -58,6 +66,7 @@
    "rate":"4.1"
 },
 {
+   "id":"9",
    "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhqVrXTH_kH8FDdf20gi7pERoYpjM_EpaYnQ&s",
    "product name":"Medical product",
    "description":"Alan Electronic Systems Private Limited is a well established company in the field of Industrial Electronics with excellent growth. Alan enjoys substantial Market Share for its specialized products such as Micro-Controller based embedded systems, Power Electronics & Electro-Medical Systems. After successfully catering to competitive industrial market, ALAN launched its Medical Division in the year 2004. The first product of this division was Surgical Diathermy of International Standard.",
@@ -65,6 +74,7 @@
    "rate":"4.1"
 },
 {
+      "id":"10",
    "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhqVrXTH_kH8FDdf20gi7pERoYpjM_EpaYnQ&s",
    "product name":"Medical product",
    "description":"Alan Electronic Systems Private Limited is a well established company in the field of Industrial Electronics with excellent growth. Alan enjoys substantial Market Share for its specialized products such as Micro-Controller based embedded systems, Power Electronics & Electro-Medical Systems. After successfully catering to competitive industrial market, ALAN launched its Medical Division in the year 2004. The first product of this division was Surgical Diathermy of International Standard.",
