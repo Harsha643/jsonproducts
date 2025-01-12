@@ -1,13 +1,19 @@
 
 async function fetchData() {
+    let loader=document.createElement("div")
     let response=await fetch("https://brick-tourmaline-case.glitch.me/products")
     try{
         if(!response.ok){
             throw new Error(response.statusText)
         }
         let data=await response.json()
-        // console.log(data)
+        if(datalength===0){
+            loader.innerText="DATA IS NOT AVIALABLE"
+            document.body.appendChild(loader)
+
+        }else{
         displayData(data)
+        }
     }catch(error){
         alert("data is fetch to failed")
         console.error(error)
@@ -18,7 +24,7 @@ fetchData()
 
 function displayData(products){
 let container =document.getElementById("container")
-
+container.innerHTML=""
     products.forEach((product) => {
         // console.log(product.id)
         let item = document.createElement("div");
@@ -97,10 +103,24 @@ async function editData(id){
 
 }
 
+function vaildateInput(){
+   
+    let productName=document.getElementById("name").value
+    let image=document.getElementById("image").value
+    let des=document.getElementById("des").value
+    let rate=document.getElementById("rate").value
+    let price=document.getElementById("price").value
+
+}
+
 
 async function saveData() {
     
-    let studentId=document.getElementById("id").value
+           if(!vaildateInput()) return;
+
+
+
+    let productId=document.getElementById("id").value
     let productName=document.getElementById("name").value
     let image=document.getElementById("image").value
     let des=document.getElementById("des").value
@@ -114,8 +134,8 @@ async function saveData() {
         "rate":rate,
         "price":price
     }
-    let  method=studentId?"PUT":"POST"
-    let URL=studentId?`https://brick-tourmaline-case.glitch.me/products/${studentId}`:"https://brick-tourmaline-case.glitch.me/products"
+    let  method=productId?"PUT":"POST"
+    let URL=productId?`https://brick-tourmaline-case.glitch.me/products/${productId}`:"https://brick-tourmaline-case.glitch.me/products"
     let response=await fetch(URL,{
         method,
         "headers":{

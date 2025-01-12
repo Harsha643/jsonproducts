@@ -132,11 +132,16 @@ body {
     
     <div class="container-1">
         <input type="hidden" id="id">
-        <input type="text" placeholder="name" id="name" required  >
-        <input type="text"  placeholder='image URL' id="image" required>
-        <input type="text"  placeholder='Description' id="des" required>
-        <input type="text"  placeholder='rating' id="rate" required>
-        <input type="text"  placeholder='price' id="price" required>
+        <input type="text" placeholder="name" id="name" required  autocomplete="off">
+        <div id="nameError"></div>
+        <input type="text"  placeholder='image URL' id="image" required autocomplete="off">
+        <div id="imageError"></div>
+        <input type="text"  placeholder='Description' id="des" required autocomplete="off">
+        <div id="DescriptionError"></div>
+        <input type="text"  placeholder='rating' id="rate" required autocomplete="off">
+        <div id="RateError"></div>
+        <input type="text"  placeholder='price' id="price" required autocomplete="off">
+        <div id="priceError"></div>
         <button onclick="saveData()" >Save the Data</button>
     </div>
     <div id="container"></div>
