@@ -25,59 +25,94 @@ function valid() {
     // Get input fields and their error placeholders
     const name = document.getElementById("name").value.trim();
     const nameError = document.getElementById("nameError");
-    const image = document.getElementById("image").value.trim();
-    
+    const image = document.getElementById("image").value.trim(); 
     const imageError = document.getElementById("imageError");
     const des = document.getElementById("des").value.trim();
     const desError = document.getElementById("descriptionError");
-    // const rate = document.getElementById("rate").value.trim();
+    const rate = document.getElementById("rate").value.trim();
     const price = document.getElementById("price").value.trim();
     const priceError = document.getElementById("priceError");
 
-    // const rateError = document.getElementById("RateError");
+    const rateError = document.getElementById("rateError");
 
   
     // Clear previous error messages
-    nameError.textContent =name? "":"name is required";
-    imageError.textContent =image? "":"Image is required";
-    desError.textContent = des?"":"Description is requied";
-    // rateError.textContent = "";
-    priceError.textContent = price?"":"price is required";
+//     nameError.textContent =name? "":"name is required";
+//     imageError.textContent =image? "":"Image is required";
+//     desError.textContent = des?"":"Description is requied";
+//     priceError.textContent = price?"":"price is required";
+//     rateError.textContent=rate?"":"rating is required";
 
-    if((!name || !image) && (!des || !price)) isValid=false;
-return isValid;
+
+//     if((((!name || !image) && (!des || !price)))&&(!rate)) isValid=false;
+// return isValid;
+
+
+
+    // Validate name
+    if (!name) {
+        nameError.textContent = "Name is required.";
+        isValid = false;
+    }
+
+    // Validate image URL
+    if (!image) {
+        imageError.textContent = "Image URL is required.";
+        isValid = false;
+    } else if (!isValidURL(image)) {
+        imageError.textContent = "Enter a valid URL.";
+        isValid = false;
+    }
+
+    // Validate description
+    if (!des) {
+        desError.textContent = "Description is required.";
+        desError.style.color="red"
+        isValid = false;
+    }
+
+    // Validate rate (should be a number between 1 and 5)
+    if (!rate) {
+        rateError.innerText = "Rating is required.";
+        rateError.style.color="red"
+        isValid = false;
+    } //else if (isNaN(rate) || rate < 1 || rate > 5) {
+    //     rateError.textContent = "Rating must be a number between 1 and 5.";
+    //     isValid = false;
+    // }
+
+    // Validate price (should be a positive number)
+    if (!price) {
+        priceError.textContent = "Price is required.";
+        isValid = false;
+    } 
+    // else if (isNaN(price) || price <= 0) {
+    //     priceError.textContent = "Price must be a positive number.";
+    //     isValid = false;
+    // }
+
+    if (!isValid) {
+        alert("Please fill out all fields correctly.");
+    }
+
+    return isValid;
+}
+
+// Helper function to validate URL
+function isValidURL(string) {
+    try {
+        new URL(string);
+        return true;
+    } catch (_) {
+        return false;
+    }
+}
         
       
 
 
 
 
-    // Validate name
-    // if (!name) {
-    //     nameError.textContent = "Name is required.";
-    //     isValid= false;
-    // }
-  
-     // Validate description
-    //  if (!des) {
-    //     desError.textContent= "Description is required.";
-    //     isValid = false;
-    // }
-    //  // Validate price (should be a positive number)
-    //  if (!price) {
-    //     priceError.textContent ="Price is required.";
-    //     isValid = false;
-    //  }
- 
-  
-    //  // Validate image URL
-    //  if (!image) {
-    //     imageError.textContent = "Image URL is required.";
-    //     isValid = false;
-    //  }
-
-    
-}
 
 function displayData(products){
 let container =document.getElementById("container")
@@ -86,9 +121,10 @@ container.innerHTML=""
         // console.log(product.id)
         let item = document.createElement("div");
         item.innerHTML = `
-        <img src="${product.image}" alt="${product.productName}" style="width:100%; border-radius:8px;">
+        <img src="${product.image}" alt="${product.productName}" style="width:100px; border-radius:8px;">
             <p>ID : ${product.id}</p>
             <p>Name : ${product.productName}</p>
+            <button id='desBtn-${product.id}'>Description</button>
             <p>rating:${product.rate}</p>
             
             <p>price :${product.price}</p>
@@ -98,7 +134,16 @@ container.innerHTML=""
             container.appendChild(item);
         let deleteBtn = document.getElementById(`deleteBtn-${product.id}`);
         let editBtn=document.getElementById(`editBtn-${product.id}`)
+        let desBtn=document.getElementById(`desBtn-${product.id}`)
       
+
+        desBtn.onclick=()=>{
+            // debugger
+            console.log(product.id)
+           descriptionbtn(product.id)
+        }
+
+       
         deleteBtn.onclick = () => {
             deleteData(product.id);
             console.log(product.id)
@@ -121,7 +166,7 @@ async function deleteData(productId) {
             throw new Error("delete function " ,response.statusText)
         }
         alert("deleteData successfully")
-      
+      fetchData()
     }catch(error){
         alert("deletedata is failed")
         console.error(error)
@@ -129,9 +174,37 @@ async function deleteData(productId) {
 
     }
 }
+
+function descriptionbtn(id){
+      
+     fetch(`https://brick-tourmaline-case.glitch.me/products/${id}`)
+     .then(res=>{
+        try{
+            if(!res.ok){
+            throw new Error("description error")
+            }
+        }catch(error){
+            alert("check the description")
+            console.log(error)
+        }
+       
+     })
+
+}
   
 
-async function editData(id){
+//after update data clear that form
+function clearForm() {
+    document.getElementById("id").value = "";
+    document.getElementById("name").value = "";
+    document.getElementById("image").value = "";
+    document.getElementById("des").value = "";
+    document.getElementById("rate").value = "";
+    document.getElementById("price").value = "";
+}
+
+
+async function editData(id){  //editdata  using id 
 //    console.log(id)
     let pId=document.getElementById("id")
     let name=document.getElementById("name")
@@ -167,7 +240,7 @@ async function editData(id){
     async function saveData() {
         // console.log("vasthunnna")
         if(!valid()){
-            console.log("vasthunnna")
+            alert("data is not valid")
             return;
         }else{
             
@@ -202,7 +275,7 @@ async function editData(id){
      alert("data updated successfully")
   
      fetchData()
-
+     clearForm()
  }catch(error){
      console.error(error)
  }
@@ -210,14 +283,6 @@ async function editData(id){
         }
 
 }
-
-
-
-
-
-
-
-
 
 
 
