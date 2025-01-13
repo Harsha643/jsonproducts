@@ -7,28 +7,23 @@ async function fetchData() {
             throw new Error(response.statusText)
         }
         let data=await response.json()
-   if(data.length==0){
-    let div=document.createElement("div")
-    div.innerText="data is not available"
-    div.style.width="400px"
-    div.style.fontSize="32px"
-    div.style.fontWeight="1000"
-    document.body.appendChild(div)    
-      alert("data is not available")
-   }else{
-    
-        displayData(data)
-   }
+
+if (data.length === 0) {
+    // No data available
+    document.getElementById('loading-screen').style.display = 'none';
+    document.getElementById('no-data-message').style.display = 'block';
+} else {
+    // Display products
+    displayData(data);
+    // fetchData()
+}
         
     }catch(error){
         alert("data is fetch to failed")
         console.error(error)
-
     }
 }
 fetchData()
-
-
 
 function valid() {
     let isValid=true;
@@ -135,6 +130,7 @@ function isValidURL(string) {
 function displayData(products){
 let container =document.getElementById("container")
 container.innerHTML=""
+document.getElementById('no-data-message').style.display = 'none';
     products.forEach((product) => {
         // console.log(product.id)
         let item = document.createElement("div");
@@ -155,13 +151,18 @@ container.innerHTML=""
    
 
         deleteBtn.onclick = () => {
-            deleteData(product.id);
+            // deleteData(product.id);
             console.log(product.id)
         }
        editBtn.onclick=()=>{
-       console.log(product.id)
+    //    console.log(product.id)
          editData(product.id)
        }
+
+
+
+        // Hide loading screen after data is fetched and displayed
+    document.getElementById('loading-screen').style.display = 'none';
     })
  fetchData()
  
@@ -176,7 +177,9 @@ async function deleteData(productId) {
             throw new Error("delete function " ,response.statusText)
         }
         alert("deleteData successfully")
+   
       fetchData()
+      clearForm()
         }catch(error){
         alert("deletedata is failed")
         console.error(error)
@@ -235,7 +238,7 @@ async function editData(id){  //editdata  using id
 
 }
     async function saveData() {
-        // console.log("vasthunnna")
+       
         if(!valid()){
             alert("data is not valid")
             return;
