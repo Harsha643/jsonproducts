@@ -151,7 +151,7 @@ document.getElementById('no-data-message').style.display = 'none';
    
 
         deleteBtn.onclick = () => {
-            // deleteData(product.id);
+            deleteData(product.id);
             console.log(product.id)
         }
        editBtn.onclick=()=>{
@@ -169,17 +169,19 @@ document.getElementById('no-data-message').style.display = 'none';
     
 };
 async function deleteData(productId) {
-// console.log(productId)
+console.log(productId)
     let response=await fetch(`https://brick-tourmaline-case.glitch.me/products/${productId}`,{"method":"DELETE"})
     try{
         if(!response.ok){
             alert("deleteData function")
             throw new Error("delete function " ,response.statusText)
         }
+
         alert("deleteData successfully")
+
    
-      fetchData()
-      clearForm()
+    //   fetchData()
+    //   clearForm()
         }catch(error){
         alert("deletedata is failed")
         console.error(error)
