@@ -7,8 +7,18 @@ async function fetchData() {
             throw new Error(response.statusText)
         }
         let data=await response.json()
-     
+   if(data.length==0){
+    let div=document.createElement("div")
+    div.innerText="data is not available"
+    div.style.width="400px"
+    div.style.fontSize="32px"
+    div.style.fontWeight="1000"
+    document.body.appendChild(div)    
+      alert("data is not available")
+   }else{
+    
         displayData(data)
+   }
         
     }catch(error){
         alert("data is fetch to failed")
@@ -53,6 +63,8 @@ function valid() {
     if (!name) {
         nameError.textContent = "Name is required.";
         isValid = false;
+    }else{
+        nameError.style.display="none"
     }
 
     // Validate image URL
@@ -62,6 +74,8 @@ function valid() {
     } else if (!isValidURL(image)) {
         imageError.textContent = "Enter a valid URL.";
         isValid = false;
+    }else{
+        imageError.style.display="none"
     }
 
     // Validate description
@@ -69,6 +83,8 @@ function valid() {
         desError.textContent = "Description is required.";
         desError.style.color="red"
         isValid = false;
+    }else{
+        desError.style.display="none"
     }
 
     // Validate rate (should be a number between 1 and 5)
@@ -76,20 +92,24 @@ function valid() {
         rateError.innerText = "Rating is required.";
         rateError.style.color="red"
         isValid = false;
-    } //else if (isNaN(rate) || rate < 1 || rate > 5) {
-    //     rateError.textContent = "Rating must be a number between 1 and 5.";
-    //     isValid = false;
-    // }
+    } else if (isNaN(rate) || rate < 1 || rate > 5) {
+        rateError.textContent = "Rating must be a number between 1 and 5.";
+        isValid = false;
+    }else{
+        rateError.style.display="none"
+    }
 
     // Validate price (should be a positive number)
     if (!price) {
         priceError.textContent = "Price is required.";
         isValid = false;
     } 
-    // else if (isNaN(price) || price <= 0) {
-    //     priceError.textContent = "Price must be a positive number.";
-    //     isValid = false;
-    // }
+    else if (isNaN(price) || price <= 0) {
+        priceError.textContent = "Price must be a positive number.";
+        isValid = false;
+    }else{
+        priceError.style.display="none"
+    }
 
     if (!isValid) {
         alert("Please fill out all fields correctly.");
@@ -106,12 +126,10 @@ function isValidURL(string) {
     } catch (_) {
         return false;
     }
+
 }
         
       
-
-
-
 
 
 function displayData(products){
@@ -124,7 +142,7 @@ container.innerHTML=""
         <img src="${product.image}" alt="${product.productName}" style="width:100px; border-radius:8px;">
             <p>ID : ${product.id}</p>
             <p>Name : ${product.productName}</p>
-            <button id='desBtn-${product.id}'>Description</button>
+            <p>${product.description}</p>
             <p>rating:${product.rate}</p>
             
             <p>price :${product.price}</p>
@@ -134,16 +152,8 @@ container.innerHTML=""
             container.appendChild(item);
         let deleteBtn = document.getElementById(`deleteBtn-${product.id}`);
         let editBtn=document.getElementById(`editBtn-${product.id}`)
-        let desBtn=document.getElementById(`desBtn-${product.id}`)
-      
+   
 
-        desBtn.onclick=()=>{
-            // debugger
-            console.log(product.id)
-           descriptionbtn(product.id)
-        }
-
-       
         deleteBtn.onclick = () => {
             deleteData(product.id);
             console.log(product.id)
@@ -153,7 +163,7 @@ container.innerHTML=""
          editData(product.id)
        }
     })
- 
+ fetchData()
  
     
 };
@@ -167,7 +177,7 @@ async function deleteData(productId) {
         }
         alert("deleteData successfully")
       fetchData()
-    }catch(error){
+        }catch(error){
         alert("deletedata is failed")
         console.error(error)
    
@@ -175,22 +185,7 @@ async function deleteData(productId) {
     }
 }
 
-function descriptionbtn(id){
-      
-     fetch(`https://brick-tourmaline-case.glitch.me/products/${id}`)
-     .then(res=>{
-        try{
-            if(!res.ok){
-            throw new Error("description error")
-            }
-        }catch(error){
-            alert("check the description")
-            console.log(error)
-        }
-       
-     })
 
-}
   
 
 //after update data clear that form
@@ -201,6 +196,8 @@ function clearForm() {
     document.getElementById("des").value = "";
     document.getElementById("rate").value = "";
     document.getElementById("price").value = "";
+
+   
 }
 
 
@@ -273,7 +270,6 @@ async function editData(id){  //editdata  using id
          throw new Error(res.statusText)
      }
      alert("data updated successfully")
-  
      fetchData()
      clearForm()
  }catch(error){
