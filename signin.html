@@ -3,51 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Responsive Login Form</title>
     <style>
-        .container{
+        /* General Reset */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
             display: flex;
-            border-radius:20px;
-            border: 2px solid black;
-            flex-direction: column;
-            box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            background-image: url("https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+            background-repeat: no-repeat;
+            background-size: cover;
+            justify-content: center;
+            gap:20pxpx;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            /* width: 100%; */
             width: 300px;
             height: 400px;
-            position: absolute;
-            gap: 20px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            align-items: center;
-            opacity:1;
-
-
-        }
-     
-        body{
-            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwn0saSOYjtbsLG5lvh8RLGE07xuGPVQOs0Q&s");
-            background-repeat: no-repeat;
-            background-size:100%;
-            width: 100%;
-        }
-        input{
-            height: 30px;
-            width: 200px;
-            margin: 10px;
-        }
-        a{
-            /* text-decoration: none; */
-            color: black;
-            font-size: 20px;
-        }
-        .recover{
+            /* max-width: 400px; */
+            /* background: #ffffff; */
+            border-radius: 10px;
+            border: 2px solid black;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 10px;
-
+            gap: 20px;
         }
+
+        .form-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            color: #333;
+        }
+
+        input {
+            width: 250px;
+            /* width: 100%; */
+            padding: 10px;
+            font-size: 16px;
+            /* border: 1px solid #ccc; */
+            border-radius: 5px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #4facfe;
+            box-shadow: 0 0 8px rgba(79, 172, 254, 0.5);
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        button {
+            /* width: 100%; */
+            width: 100px;
+            margin-left: 80px;
+            padding: 10px;
+            font-size: 18px;
+            /* color: #fff; */
+            background-color: white;
+            /* background: #4facfe; */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
         input:focus::placeholder{
              transform: translateY(-10px);
             font-size: 10px;
@@ -56,110 +86,149 @@
         }
 
 
-        .emailaddress:focus{
+        input:focus{
     outline: 1px solid black;
     
     outline-offset: 2px;
 }
-button{
-            font-size: 20px;
-        }
-        button:hover{
-            background-color: black;
-            color: white;
-        }
-.emailaddress input{
-    flex: 1;
-    height: 30px;
-    border: 0;
-    outline: 0;
-    margin-left: 20px;
 
-}
+        button:hover {
+            background: #00f2fe;
+        }
 
-        button{
-            width:150px;
+        .extra-links {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .extra-links a {
+            /* color: #4facfe; */
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        .extra-links a:hover {
+            text-decoration: underline;
+        }
+        #loginForm{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        @keyframes spinner {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #4facfe;
+            border-radius: 50%;
+            width: 30px;
             height: 30px;
+            margin: 0 auto;
+            animation: spinner 1s linear infinite;
+            display: none;
         }
-     span{
-        font-style: inherit;
-        font-weight: 300;
-        color:black;
-        
-     }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            .form-title {
+                font-size: 20px;
+            }
+
+            button {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container" id="signin" >
-        <h1 class="form-title1">Sign In</h1>
-        <form id="signup">
-          
+    <div class="container">
+        <h1 class="form-title">Login</h1>
+        <form id="loginForm">
+            <input type="text" id="email" placeholder="Email Address" autocomplete="off">
+            <div id="emailError" class="error"></div>
+            <input type="password" id="password" placeholder="Password" autocomplete="off">
+            <div id="pwdError" class="error"></div>
 
-            <!-- <label for="em">E-mail or Username</label><br> -->
-            <input type="text"  name="username"  id="email" placeholder="E-mail" autocomplete="off"><br>
-           
-            <!-- <label for="pa">Password</label><br> -->
-            <input type="password" name="username" id="password" placeholder="Password" autocomplete="off"><br>
-
-                <div class="recover">
-         
-            <button type="submit">SignIn</button>
-            
-            <span>Do you want to create now account </span>
-            <span>Click Here  <a href="./signup.html">Register</a></span>
-        </div>
-          
+            <button type="submit">Login</button>
+            <div class="loader" id="loader"></div>
         </form>
+        <div class="extra-links">
+            
+            <span>Don't have an account? <a href="./signup.html">Sign Up</a></span>
+        </div>
     </div>
+
     <script type="module">
-        // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-
-
-      
-        // Your web app's Firebase configuration
         const firebaseConfig = {
-          apiKey: "AIzaSyB__ON6fLbemYMn56Madp3J0M7-Lo03U2M",
-          authDomain: "login-auth-32c41.firebaseapp.com",
-          projectId: "login-auth-32c41",
-          storageBucket: "login-auth-32c41.firebasestorage.app",
-          messagingSenderId: "784923065748",
-          appId: "1:784923065748:web:f825c8ccc152aa24612381"
+            apiKey: "AIzaSyB__ON6fLbemYMn56Madp3J0M7-Lo03U2M",
+            authDomain: "login-auth-32c41.firebaseapp.com",
+            projectId: "login-auth-32c41",
+            storageBucket: "login-auth-32c41.firebasestorage.app",
+            messagingSenderId: "784923065748",
+            appId: "1:784923065748:web:f825c8ccc152aa24612381",
         };
-      
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
 
-        document.getElementById("signup").addEventListener("submit",()=>{
-            event.preventDefault()
-        let email=document.getElementById("email").value.trim()
+        const form = document.getElementById("loginForm");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const emailError = document.getElementById("emailError");
+        const pwdError = document.getElementById("pwdError");
+        const loader = document.getElementById("loader");
 
-        let password=document.getElementById("password").value.trim()
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            emailError.textContent = "";
+            pwdError.textContent = "";
 
-            const auth = getAuth();
-            signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed up 
-    const user = userCredential.user;
-    // ...
-    console.log(email,password)
-     window.location.href="./admin.html"
-  })
-  .catch((error) => {
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
 
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode)
+            if (!email) {
+                emailError.textContent = "Email is required.";
+                return;
+            }
 
-  });
-        })
+            if (!password) {
+                pwdError.textContent = "Password is required.";
+                return;
+            }
 
-      </script>
+            loader.style.display = "block";
 
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                alert("Login successful!");
+                window.location.href = "./admin.html";
+            } catch (error) {
+                loader.style.display = "none";
+                if (error.code === "auth/user-not-found") {
+                    emailError.textContent = "No user found with this email.";
+                } else if (error.code === "auth/wrong-password") {
+                    pwdError.textContent = "Incorrect password.";
+                } else {
+                    alert("Login failed. Please try again.");
+                }
+            }
+        });
+    </script>
 </body>
 </html>

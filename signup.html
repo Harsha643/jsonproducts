@@ -3,47 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Register</title>
     <style>
-        .container{
-            display:flex;
-            border-radius:20px;
-            border: 2px solid black;
-            flex-direction: column;
-            box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            width: 300px;
-            height: 400px;
-            position: absolute;
-            gap: 20px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
             align-items: center;
-            opacity:1;
-         
-
-
+            height: 100vh;
         }
 
-
-
-        body{
-            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwn0saSOYjtbsLG5lvh8RLGE07xuGPVQOs0Q&s");
-            background-repeat: no-repeat;
-            background-size:100%;
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             width: 100%;
+            max-width: 400px;
         }
-        input{
-            height: 30px;
-            width: 200px;
-            margin: 10px;
+        span{
+            margin-left: 100px;
         }
-        a{
-            /* text-decoration: none; */
-            color: black;
-            font-size: 20px;
+
+        h1 {
+            text-align: center;
+            color: #333;
         }
-       
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #6e8efb;
+            outline: none;
+        }
+
+        
         input:focus::placeholder{
              transform: translateY(-10px);
             font-size: 10px;
@@ -52,116 +61,143 @@
         }
 
 
-        .emailaddress:focus{
+        input:focus{
     outline: 1px solid black;
     
     outline-offset: 2px;
 }
-button{
-            font-size: 20px;
+
+        .error {
+            color: red;
+            font-size: 14px;
         }
-        button:hover{
-            background-color: black;
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+
+        button {
+            background: #6e8efb;
             color: white;
-        }
-.emailaddress input{
-    flex: 1;
-    height: 30px;
-    border: 0;
-    outline: 0;
-    margin-left: 20px;
-
-}
-
-a{
-    text-decoration: none;
-}
-
-.recover{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
 
-        button{
-            width:150px;
-            height: 30px;
+        button:hover {
+            background: #5a77d2;
         }
-     
+
+        .success {
+            text-align: center;
+            color: green;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            input, button {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container" id="signin" >
-        <h1 class="form-title1">Register Now</h1>
-        <form id="signup">
-          
-            <!-- <label for="em">E-mail</label><br> -->
-            <input type="text"  name="username"  id="email" placeholder="E-mail" autocomplete="off"><br>
-           
-            <!-- <label for="pa">Password</label><br> -->
-            <input type="password" name="username" id="password" placeholder="Password" autocomplete="off"><br>
+    <div class="container">
+        <h1>Register</h1>
+        <form id="registrationForm">
+            <input type="email" id="email" placeholder="Enter your email" required  autocomplete="off">
+            <div id="emailError" class="error"></div>
 
-            <div class="recover">
-                
-                <button id="btnbutton1">SignUp</button>
-            <button><a href="./signin.html" >SignIn</a></button>
-            
-         
-            
-        
-        </div>
-          
+            <input type="password" id="password" placeholder="Enter your password" required autocomplete="off" >
+            <div id="passwordError" class="error"></div>
+
+            <input type="password" id="confirmPassword" placeholder="Confirm your password" required autocomplete="off" >
+            <div id="confirmPasswordError" class="error"></div>
+
+            <button type="submit" id="registerButton">Register</button>
+             
+            <span> Already you have account?  <a href="./signin.html">SignIn</a></span>
+            <div id="loading" style="display: none; text-align: center;">Registering...</div>
+            <div id="successMessage" class="success"></div>
         </form>
     </div>
+
     <script type="module">
-        // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
         const firebaseConfig = {
-          apiKey: "AIzaSyB__ON6fLbemYMn56Madp3J0M7-Lo03U2M",
-          authDomain: "login-auth-32c41.firebaseapp.com",
-          projectId: "login-auth-32c41",
-          storageBucket: "login-auth-32c41.firebasestorage.app",
-          messagingSenderId: "784923065748",
-          appId: "1:784923065748:web:f825c8ccc152aa24612381"
+            apiKey: "AIzaSyB__ON6fLbemYMn56Madp3J0M7-Lo03U2M",
+            authDomain: "login-auth-32c41.firebaseapp.com",
+            projectId: "login-auth-32c41",
+            storageBucket: "login-auth-32c41.appspot.com",
+            messagingSenderId: "784923065748",
+            appId: "1:784923065748:web:f825c8ccc152aa24612381"
         };
-      
-        // Initialize Firebase
+
         const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
 
-        document.getElementById("signup").addEventListener("submit",()=>{
-            event.preventDefault()
-        let email=document.getElementById("email").value.trim()
+        const form = document.getElementById("registrationForm");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const confirmPasswordInput = document.getElementById("confirmPassword");
+        const emailError = document.getElementById("emailError");
+        const passwordError = document.getElementById("passwordError");
+        const confirmPasswordError = document.getElementById("confirmPasswordError");
+        const loading = document.getElementById("loading");
+        const successMessage = document.getElementById("successMessage");
 
-        let password=document.getElementById("password").value.trim()
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            emailError.textContent = "";
+            passwordError.textContent = "";
+            confirmPasswordError.textContent = "";
+            successMessage.textContent = "";
 
-            const auth = getAuth();
-        createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed up 
-    const user = userCredential.user;
-    // ...
-    console.log(email,password)
-    window.location.href="./signin.html"
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
+            const confirmPassword = confirmPasswordInput.value.trim();
 
-  })
-  .catch((error) => {
+            if (!email) {
+                emailError.textContent = "Invalid email format.";
+                return;
+            }
 
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode)
+            if (password.length < 8 || !/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/[0-9]/.test(password)) {
+                passwordError.textContent = "Password must be at least 8 characters long, including uppercase, lowercase, and numbers.";
+                return;
+            }
 
-  });
-        })
+            if (password !== confirmPassword) {
+                confirmPasswordError.textContent = "Passwords do not match.";
+                return;
+            }
 
-      </script>
+            loading.style.display = "block";
 
+            try {
+                await createUserWithEmailAndPassword(auth, email, password);
+                successMessage.textContent = "Registration successful! Redirecting to login...";
+                setTimeout(() => {
+                    window.location.href = "./signin.html";
+                }, 3000);
+            } catch (error) {
+                emailError.textContent = error.message;
+            } finally {
+                loading.style.display = "none";
+            }
+        });
+    </script>
 </body>
 </html>
