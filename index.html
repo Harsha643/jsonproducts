@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
+    <link rel="shortcut icon" href="https://img.icons8.com/?size=100&id=23493&format=png&color=000000" type="image/x-icon">
     <style>
         /* General body styling */
 body {
@@ -17,10 +18,24 @@ body {
   justify-content: center;
 }
 
+input:focus::placeholder{
+             transform: translateY(-10px);
+            font-size: 10px;
+
+
+        }
+
+
+        input:focus{
+    outline: 1px solid black;
+    
+    outline-offset: 2px;
+}
+
 /* Styling for the form container */
 .container-1 {
   width: 90%;
-  max-width: 600px;
+  max-width: 500px;
   margin: 20px auto;
   padding: 20px;
   background-color: rgb(255, 255, 255); /* White background */
@@ -31,7 +46,7 @@ body {
 /* Input and button styling */
 .container-1 input,
 .container-1 button {
-  width: 100%;
+  width: 90%;
   margin: 10px 0;
   padding: 10px;
   border: 1px solid rgb(200, 200, 200);

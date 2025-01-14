@@ -28,11 +28,11 @@
         body{
             background-image: url("https://www.ibm.com/blogs/jobs/wp-content/uploads/2024/05/Product-Managers-at-IBM.jpg");
         }
-        /* input{
+        input{
             height: 30px;
             width: 200px;
-            margin: 15px;
-        } */
+            margin: 10px;
+        }
         a{
             /* text-decoration: none; */
             color: black;
@@ -53,12 +53,18 @@
         }
 
 
-
         .emailaddress:focus{
-    outline: 1px solid white;
+    outline: 1px solid black;
     
     outline-offset: 2px;
 }
+button{
+            font-size: 20px;
+        }
+        button:hover{
+            background-color: black;
+            color: white;
+        }
 .emailaddress input{
     flex: 1;
     height: 30px;
@@ -67,11 +73,11 @@
     margin-left: 20px;
 
 }
-    input:focus::placeholder{
+    /* input:focus{
     transform: translateY(-10px);
     font-size: 10px;
 
-}
+} */
 
         button{
             width:150px;
@@ -102,7 +108,7 @@
          
             
         
-            <button id="signButton" onclick="goBack()">register</button>
+            <button id="signButton" onclick="goBack()">Register</button>
            </div>
            
         </div>
