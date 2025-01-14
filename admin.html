@@ -87,11 +87,11 @@ input:focus::placeholder{
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
 }
 
 #container div:hover {
-  transform: translateY(-3px);
+  transform: translateY(5px);
 }
 
 /* Text styling inside product cards */
@@ -148,11 +148,12 @@ input:focus::placeholder{
     color: red;
 }
 
- /* Loading Screen */
+ /* Loading Screen
  #loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
+            position:absolute;
+            top: 60;
+            left: 40;
+            transform: translate(-50%,-50%);
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.3);
@@ -162,7 +163,27 @@ input:focus::placeholder{
             color: white;
             font-size: 24px;
             font-weight: bold;
-        }
+        } */
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 120px;
+  height: 20px;
+  position:absolute;
+            top: 75%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+  background:
+   linear-gradient(#000 0 0) left/20px 20px no-repeat
+   #ddd;
+  animation: l1 1s infinite linear;
+}
+@keyframes l1 {
+    50% {background-position: right }
+}
+
+
+
 
         /* No Data Message */
         #no-data-message {
@@ -176,7 +197,7 @@ input:focus::placeholder{
     </style>
 </head>
 <body>
-  <div id="loading-screen">Loading Products...</div>
+  <div class="loader"></div>
 
   <!-- No Data Message -->
   <div id="no-data-message">No products found. Please try again later.</div>

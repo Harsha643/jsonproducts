@@ -1,6 +1,6 @@
 
 async function fetchData() {
-    let loader=document.getElementById("loading-screen")
+    let loader=document.getElementById("loader")
    
     let response=await fetch("https://brick-tourmaline-case.glitch.me/products")
     try{
@@ -14,7 +14,7 @@ if (data.length === 0) {
     document.getElementById('no-data-message').style.display = 'block';
 } else {
     // Display products
-    loader.style.display="none"
+    // loader.style.display="none"
     displayData(data);
     // fetchData()
 }
@@ -134,46 +134,50 @@ function isValidURL(string) {
 
 
 function displayData(products){
+setTimeout(()=>{
+document.querySelector(".loader").style.display = 'none';
+    // loader.style.display = 'none';
 
 
-let container =document.getElementById("container")
-container.innerHTML=""
-document.getElementById('no-data-message').style.display = 'none';
-    products.forEach((product) => {
-        // console.log(product.id)
-        let item = document.createElement("div");
-        item.innerHTML = `
-        <img src="${product.image}" alt="${product.productName}" style="width:100px; border-radius:8px;">
-            <p>ID : ${product.id}</p>
-            <p>Name : ${product.productName}</p>
-            <p>${product.description}</p>
-            <p>rating:${product.rate}</p>
-            
-            <p>price :${product.price}</p>
-            <button id = 'deleteBtn-${product.id}'>Delete</button>
-            <button id = 'editBtn-${product.id}'>Edit</button>
-            `
-            container.appendChild(item);
-        let deleteBtn = document.getElementById(`deleteBtn-${product.id}`);
-        let editBtn=document.getElementById(`editBtn-${product.id}`)
-   
-
-        deleteBtn.onclick = () => {
-            deleteData(product.id);
+    let container =document.getElementById("container")
+    container.innerHTML=""
+    document.getElementById('no-data-message').style.display = 'none';
+        products.forEach((product) => {
             // console.log(product.id)
-        }
-       editBtn.onclick=()=>{
-    //    console.log(product.id)
-         editData(product.id)
-       }
-      // Hide loading screen after data is fetched and displayed
-      document.getElementById('loading-screen').style.display = 'none';
-
-    })
- fetchData()
+            let item = document.createElement("div");
+            item.innerHTML = `
+            <img src="${product.image}" alt="${product.productName}" style="width:100px; border-radius:8px;">
+                <p>ID : ${product.id}</p>
+                <p>Name : ${product.productName}</p>
+                <p>${product.description}</p>
+                <p>rating:${product.rate}</p>
+                
+                <p>price :${product.price}</p>
+                <button id = 'deleteBtn-${product.id}'>Delete</button>
+                <button id = 'editBtn-${product.id}'>Edit</button>
+                `
+                container.appendChild(item);
+            let deleteBtn = document.getElementById(`deleteBtn-${product.id}`);
+            let editBtn=document.getElementById(`editBtn-${product.id}`)
+       
+    
+            deleteBtn.onclick = () => {
+                deleteData(product.id);
+                // console.log(product.id)
+            }
+           editBtn.onclick=()=>{
+        //    console.log(product.id)
+             editData(product.id)
+           }
+        
+    
+        })
+     fetchData()
+},3000)
+   
  
     
-};
+}
 async function deleteData(productId) {
 console.log(productId)
     let response=await fetch(`https://brick-tourmaline-case.glitch.me/products/${productId}`,{"method":"DELETE"})
