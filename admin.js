@@ -1,13 +1,13 @@
 
 async function fetchData() {
-  
+
+   
     let response=await fetch("https://brick-tourmaline-case.glitch.me/products")
     try{
         if(!response.ok){
             throw new Error(response.statusText)
         }
         let data=await response.json()
-
 if (data.length === 0) {
     // No data available
     document.getElementById('loading-screen').style.display = 'none';
@@ -24,6 +24,8 @@ if (data.length === 0) {
     }
 }
 fetchData()
+
+
 
 function valid() {
     let isValid=true;
@@ -127,7 +129,11 @@ function isValidURL(string) {
       
 
 
+
+
 function displayData(products){
+
+
 let container =document.getElementById("container")
 container.innerHTML=""
 document.getElementById('no-data-message').style.display = 'none';
@@ -158,11 +164,9 @@ document.getElementById('no-data-message').style.display = 'none';
     //    console.log(product.id)
          editData(product.id)
        }
+      // Hide loading screen after data is fetched and displayed
+      document.getElementById('loading-screen').style.display = 'none';
 
-
-
-        // Hide loading screen after data is fetched and displayed
-    document.getElementById('loading-screen').style.display = 'none';
     })
  fetchData()
  
@@ -180,7 +184,7 @@ console.log(productId)
         alert("deleteData successfully")
 
    
-    //   fetchData()
+      fetchData()
     //   clearForm()
         }catch(error){
         alert("deletedata is failed")
