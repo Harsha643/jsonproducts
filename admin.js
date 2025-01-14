@@ -157,7 +157,7 @@ document.getElementById('no-data-message').style.display = 'none';
    
 
         deleteBtn.onclick = () => {
-            deleteData(product.id);
+            // deleteData(product.id);
             console.log(product.id)
         }
        editBtn.onclick=()=>{
@@ -185,7 +185,7 @@ console.log(productId)
 
    
       fetchData()
-    //   clearForm()
+      clearForm()
         }catch(error){
         alert("deletedata is failed")
         console.error(error)
