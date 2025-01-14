@@ -1,6 +1,6 @@
 
 async function fetchData() {
-
+    let loader=document.getElementById("loading-screen")
    
     let response=await fetch("https://brick-tourmaline-case.glitch.me/products")
     try{
@@ -10,10 +10,11 @@ async function fetchData() {
         let data=await response.json()
 if (data.length === 0) {
     // No data available
-    document.getElementById('loading-screen').style.display = 'none';
+    loader.style.display = 'none';
     document.getElementById('no-data-message').style.display = 'block';
 } else {
     // Display products
+    loader.style.display="none"
     displayData(data);
     // fetchData()
 }
@@ -21,6 +22,7 @@ if (data.length === 0) {
     }catch(error){
         alert("data is fetch to failed")
         console.error(error)
+        loader.innerText="Failed to load content."
     }
 }
 fetchData()
@@ -157,8 +159,8 @@ document.getElementById('no-data-message').style.display = 'none';
    
 
         deleteBtn.onclick = () => {
-            // deleteData(product.id);
-            console.log(product.id)
+            deleteData(product.id);
+            // console.log(product.id)
         }
        editBtn.onclick=()=>{
     //    console.log(product.id)
