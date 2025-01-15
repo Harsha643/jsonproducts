@@ -1,0 +1,278 @@
+main-page.html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Header</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5, #ff9a9e, #a1c4fd, #667eea);
+            background-size: 400% 400%;
+            animation: gradient-shift 15s ease-in-out infinite alternate;
+            overflow: hidden;
+        }
+
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            top: 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-bar {
+            position: relative;
+            width: 300px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.3);
+            font-size: 1rem;
+            color: black;
+            outline: none;
+        }
+
+        .search-bar a {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #000;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .menu {
+            cursor: pointer;
+            font-size: 2rem;
+            color: #fff;
+            position: relative;
+        }
+
+        .menu-bar-icons {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-bar-icons a {
+            display: block;
+            margin: 10px 0;
+            color: #fff;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .menu-bar-icons a:hover {
+            color: #74ebd5;
+        }
+
+        @keyframes gradient-shift {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        .form-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 40px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+            border: 1px solid rgba(33, 17, 17, 0.18);
+        }
+
+        .form-box h1 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .input-box {
+            margin: 15px 0;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: black;
+            font-size: 1rem;
+            outline: none;
+            text-align: center;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            margin-top: 20px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 25px;
+            color: black;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(90deg, #764ba2, #667eea);
+        }
+
+        form p {
+            color: black;
+            font-size: 1.1rem;
+            margin-top: 15px;
+        }
+
+        form a {
+            color: red;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s ease-in-out;
+        }
+
+        form a:hover {
+            color: #acb6e5;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">My Logo</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+            <a href="#"><ion-icon name="search-outline"></ion-icon></a>
+        </div>
+        <div class="menu" onclick="toggleMenu()">
+            <ion-icon name="menu-outline"></ion-icon>
+            <div class="menu-bar-icons" id="menuBarIcons">
+                <a href="https://www.facebook.com" target="_blank"><ion-icon name="logo-facebook"></ion-icon></a>
+                <a href="https://www.twitter.com" target="_blank"><ion-icon name="logo-twitter"></ion-icon></a>
+                <a href="https://www.instagram.com" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a>
+                <a href="https://www.linkedin.com" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a>
+                <a href="https://www.youtube.com" target="_blank"><ion-icon name="logo-youtube"></ion-icon></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="form-box">
+        <h1>Login</h1>
+        <form>
+            <div class="input-box">
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+            <div class="input-box">
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <p>Don't have an account? <a href="./register.html">Register</a></p>
+        </form>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        function toggleMenu() {
+            const menuIcons = document.getElementById('menuBarIcons');
+            menuIcons.style.display = menuIcons.style.display === 'block' ? 'none' : 'block';
+        }
+        
+async function getData(){
+    let loader = document.getElementById("loader")
+    let container = document.getElementsByClassName("container")[0]
+
+    loader.style.display = "block";
+    container.style.display = "none";
+
+    let response=await fetch("https://brick-tourmaline-case.glitch.me/products")
+    
+    try{
+        if(!response.ok){
+            throw new Error(response.statusText)
+
+        }
+        let student = await response.json()
+        student.forEach(element => {
+            let container=document.getElementsByClassName("container")[0];
+            let item =document.createElement("div")
+            item.className="item"
+            item.innerHTML=
+                `
+                    <img src='${element.image}'>
+                    <h3>${element.productName}</h3>
+                    <p>${element.description  || ""}</p>
+                    <div class="footer"> 
+                           <a href="https://www.amazon.com/s?k=${encodeURIComponent(element.productName)}" 
+                       
+                       class="buy">Buy Now</a>
+                          <pre class="price" data-bs-toggle="modal" data-bs-target="#couponModal">$ ${element.price}</pre>
+                    </div>
+
+            `
+            container.appendChild(item)
+
+        });
+    }catch(error){
+        console.error(error)
+    }
+    finally{
+        loader.style.display = "none";
+        container.style.display = "grid";
+    }
+}
+document.addEventListener("DOMContentLoaded",getData)
+    </script>
+</body>
+
+</html>
