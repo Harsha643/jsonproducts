@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Now</title>
+    <link rel="shortcut icon" href="https://img.icons8.com/?size=100&id=cjbPjb2NJ27f&format=png&color=000000" type="image/x-icon">
+</head>
+<body>
+    <h2>Buy Now</h2>
+    <div id="productDetails"></div>
+    <script>
+        const product = JSON.parse(localStorage.getItem("buyNowProduct"));
+        const productDetails = document.getElementById("productDetails");
+        
+        productDetails.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>Price: ₹${product.price}.00</p>
+            
+          
+            <button>Proceed to Checkout</button>
+        `;
+    </script>
+</body>
+</html>

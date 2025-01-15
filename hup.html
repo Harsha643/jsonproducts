@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="shortcut icon" href="https://img.icons8.com/?size=100&id=cjbPjb2NJ27f&format=png&color=000000" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+        span{
+            margin-left: 100px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #6e8efb;
+            outline: none;
+        }
+
+        
+        input:focus::placeholder{
+             transform: translateY(-10px);
+            font-size: 10px;
+
+
+        }
+
+
+        input:focus{
+    outline: 1px solid black;
+    
+    outline-offset: 2px;
+}
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+
+        button {
+            background: #6e8efb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background: #5a77d2;
+        }
+
+        .success {
+            text-align: center;
+            color: green;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            input, button {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Register</h1>
+        <form id="registrationForm">
+            <input type="email" id="email" placeholder="Enter your email" required  autocomplete="off">
+            <div id="emailError" class="error"></div>
+
+            <input type="password" id="password" placeholder="Enter your password" required autocomplete="off" >
+            <div id="passwordError" class="error"></div>
+
+            <input type="password" id="confirmPassword" placeholder="Confirm your password" required autocomplete="off" >
+            <div id="confirmPasswordError" class="error"></div>
+
+            <button type="submit" id="registerButton">Register</button>
+             
+            <span> Already you have account?  <a href="./h.html">SignIn</a></span>
+            <div id="loading" style="display: none; text-align: center;">Registering...</div>
+            <div id="successMessage" class="success"></div>
+        </form>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyB__ON6fLbemYMn56Madp3J0M7-Lo03U2M",
+            authDomain: "login-auth-32c41.firebaseapp.com",
+            projectId: "login-auth-32c41",
+            storageBucket: "login-auth-32c41.appspot.com",
+            messagingSenderId: "784923065748",
+            appId: "1:784923065748:web:f825c8ccc152aa24612381"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+
+        const form = document.getElementById("registrationForm");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const confirmPasswordInput = document.getElementById("confirmPassword");
+        const emailError = document.getElementById("emailError");
+        const passwordError = document.getElementById("passwordError");
+        const confirmPasswordError = document.getElementById("confirmPasswordError");
+        const loading = document.getElementById("loading");
+        const successMessage = document.getElementById("successMessage");
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            emailError.textContent = "";
+            passwordError.textContent = "";
+            confirmPasswordError.textContent = "";
+            successMessage.textContent = "";
+
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
+            const confirmPassword = confirmPasswordInput.value.trim();
+
+            if (!email) {
+                emailError.textContent = "Invalid email format.";
+                return;
+            }
+
+            if (password.length < 8 || !/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/[0-9]/.test(password)) {
+                passwordError.textContent = "Password must be at least 8 characters long, including uppercase, lowercase, and numbers.";
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                confirmPasswordError.textContent = "Passwords do not match.";
+                return;
+            }
+
+            loading.style.display = "block";
+
+            try {
+                await createUserWithEmailAndPassword(auth, email, password);
+                successMessage.textContent = "Registration successfully";
+                setTimeout(() => {
+                    window.location.href = "./user.html";
+                }, 3000);
+            } catch (error) {
+                emailError.textContent = error.message;
+            } 
+                loading.style.display = "none";
+            
+        });
+    </script>
+</body>
+</html>

@@ -3,266 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="./style.css">
+    <title>Login Form</title>
+    <link rel="icon" href="https://icons8.com/icon/26218/login" type="image/x-icon">
+    
     <style>
-        *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-.container{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 10px;
-   background:#fff;
-   width: 500px;
-   height: 500px;
-   padding: 1.5rem;
-   margin: 50px auto;
-   border-radius:10px;
-   box-shadow: 0 20px 35px rgba(0,0,1,0.9);
-}
-form{
-    margin: 0 2rem;
-}
-.form-title{
-    font-size:1.5rem;
-    font-weight: bold;
-    text-align: center;
-    padding: 1.3rem;
-    margin-bottom: 0.4rem;
-    color: red;
-}
-input{
-    color: inherit;
-    width: 100%;
-    background-color:transparent;
-    border: none;
-    border-bottom: 2px solid black;
-    padding-left:1.5rem ;
-    margin: 10px 0;
-}
-.input-group{
-    padding: 0 1.5rem;
-    position: relative;
-}
-.input-group i{
-    position: absolute;
-    color:black;
-}
-input:focus{
-    background-color: transparent;
-    outline:transparent;
-    border-bottom: 2px solid hsl(327,90%,28%);
-} 
-input::placeholder{
-    color: hsl(327,90%,28%);
-    margin-top: 5px;
-}
-label{
-    color:#757575 ;
-    position: relative;
-    left: 1.2em;
-    top:-1.3em;
-    cursor: auto;
-    transition: 0.3s ease all;
-    display: none;
-}
-/* input::placeholder:hover{
-    display: none;
-} */
-.btnbutton{
-    width: 100%;
-    padding: 10px 0;
-    border-radius: 5px;
-    border: none;
-    font-size: 1.1rem;
-    color: white;
-    background-color: red;
-    cursor: pointer;
-    transition: 0.9s;
-}
-.btnbutton:hover{
-    background-color: green;
-}
-.or{
-    font-size: 1.1rem;
-    margin-top:0.5rem ;
-    text-align: center;
-}
-.icons{
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
-    margin-top: 5px;
-}
-.icons i{
-    color: red;
-    padding: 0.8rem 1.5rem;
-    border-radius: 10px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    border:2px solid #def9f5;
-    /* margin: 5px 10px; */
-     transition: 1s;
-}
-.icons i:hover{
-    background-color: #07001f;
-    font-size: 1.6rem;
-    border: 2px solid rgb(200,150,250);
-}
-.form-end{
-    display: flex;
-    gap: 10px;
-    justify-content: space-around;
-    margin-top: 50px;
-}
-.par{
-    font-size: 1.5rem;
-    font-weight: 500px;
-}
-#GoButton{
-    width: 30%;
-    padding: 5px 0;
-    border-radius: 5px;
-    border: none;
-    font-size: 1.1rem;
-    color: white;
-    background-color: green;
-    cursor: pointer;
-    transition: 0.9s;
-}
-.form-title1{
-    font-size:1.5rem;
-    font-weight: bold;
-    text-align: center;
-    padding: 1.3rem;
-    margin-bottom: 0.4rem;
-    color: gray;
-}
-.recover{
-    text-align: center;
-    margin: 10px;
-}
-.btnbutton1{
-    width: 100%;
-    padding: 10px 0;
-    border-radius: 5px;
-    border: none;
-    font-size: 1.1rem;
-    color: white;
-    background-color: green;
-    cursor: pointer;
-    transition: 0.9s;
-}
-.ah{
-    color: green;
-}
-#signButton{
-    width: 30%;
-    padding: 5px 0;
-    border-radius: 5px;
-    border: none;
-    font-size: 1.1rem;
-    color: white;
-    background-color: green;
-    cursor: pointer;
-    transition: 0.9s;
-}
-/* Mobile-specific styles */
-.mobile-layout .container {
-    width: 90%;
-  }
+        /* General Reset */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            display: flex;
+            background-image: url("https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+            background-repeat: no-repeat;
+            background-size: cover;
+            justify-content: center;
+            gap:20pxpx;
+            align-items: center;
+            height: 100vh;
+        }
 
-  /* For smaller screens, stack the inputs vertically */
-  @media (max-width: 750px) {
-    .input-group input {
-      width: 100%;
-    }
+        .container {
+            /* width: 100%; */
+            width: 300px;
+            height: 400px;
+            /* max-width: 400px; */
+            /* background: #ffffff; */
+            border-radius: 10px;
+            border: 2px solid black;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-    .icons i{
-        flex: 1 1 25%;
-        margin: 10px;
-      
-    }
-    .par{
-        font-size: 1rem;
+        .form-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            color: #333;
+        }
 
-    }
-    .form-title{
-        font-size: none;
-        text-align: center;
-        padding: 1.3rem;
-        margin-bottom: 0.4rem;
-        color: red;
-    }
-  }
+        input {
+            width: 250px;
+            /* width: 100%; */
+            padding: 10px;
+            font-size: 16px;
+            /* border: 1px solid #ccc; */
+            border-radius: 5px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #4facfe;
+            box-shadow: 0 0 8px rgba(79, 172, 254, 0.5);
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        button {
+            /* width: 100%; */
+            width: 100px;
+            margin-left: 80px;
+            padding: 10px;
+            font-size: 18px;
+            /* color: #fff; */
+            background-color: white;
+            /* background: #4facfe; */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        input:focus::placeholder{
+             transform: translateY(-10px);
+            font-size: 10px;
+
+
+        }
+
+
+        input:focus{
+    outline: 1px solid black;
+    
+    outline-offset: 2px;
+}
+
+        button:hover {
+            background: #00f2fe;
+        }
+
+        .extra-links {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .extra-links a {
+            /* color: #4facfe; */
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        .extra-links a:hover {
+            text-decoration: underline;
+        }
+        #loginForm{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        @keyframes spinner {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #4facfe;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            margin: 0 auto;
+            animation: spinner 1s linear infinite;
+            display: none;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            .form-title {
+                font-size: 20px;
+            }
+
+            button {
+                font-size: 16px;
+            }
+        }
     </style>
-    <script src="./firebase.js" type="module"></script>
 </head>
 <body>
-    <div class="container" id="signup">
-        <h1 class="form-title">Register</h1>
-        <form method="POST" action="" >
-          <div id="signUpmessage" class="messageDiv" style="display: none;"></div>
-          <div class="input-group">
-            <i class="fas fa-user"></i>
-            <input type="text" name="username" id="username" placeholder="Username">
-            <label for="username">Username</label><br>
-            <i class="fas fa-envelope"></i>
-            <input type="eamil" name="username" id="mail" placeholder="E-mail">
-            <label for="mail">E-mail</label><br>
-            <i class="fas fa-lock"></i>
-            <input type="password" name="username" id="ps" placeholder="Password">
-            <label for="ps">Password</label><br>
-            <button class="btnbutton" id="submitSignup">Sign up</button>
-            <p class="or">______or_______</p>
-            </div>
-            <div class="icons">
-                <i class="fab fa-google"></i>
-                <i class="fab fa-facebook"></i> 
-                <i class="fa-brands fa-linkedin"></i> 
-                <i class="fab fa-github"></i>
-            </div>
-           <div class="form-end">
-            <p class="par">Already have account?</p>
-            <button onclick="toggleform()" id="GoButton">Go Back</button>
-           </div>
-          </div>
+    <div class="container">
+        <h1 class="form-title">Login</h1>
+        <form id="loginForm">
+            <input type="text" id="email" placeholder="Email Address" autocomplete="off">
+            <div id="emailError" class="error"></div>
+            <input type="password" id="password" placeholder="Password" autocomplete="off">
+            <div id="pwdError" class="error"></div>
+
+            <button type="submit">Login</button>
+            <div class="loader" id="loader"></div>
         </form>
+        <div class="extra-links">
+            
+            <span>Don't have an account? <a href="./hup.html">Sign Up</a></span>
+        </div>
     </div>
-    <div class="container" id="signin" >
-        <h1 class="form-title1">Sign In</h1>
-        <form method="POST" action="">
-          <div id="signInMessage" class="messageDiv" style="display: none;"></div>
-          <div class="input-group">
-            <i class="fas fa-user"></i>
-            <input type="username" type="email" name="username" id="em" placeholder="E-mail  or username">
-            <label for="em">E-mail or Username</label><br>
-            <i class="fas fa-lock"></i>
-            <input type="password" name="username" id="pa" placeholder="Password">
-            <label for="pa">Password</label><br>
-           <div class="recover">
-            <a href="#" style="color: black;">forget password</a>
-           </div>
-            <button class="btnbutton1">Sign In</button>
-            <p>______or_______</p>
-            </div>
-            <div class="icons">
-                <i class="fab fa-google"></i>
-                <i class="fab fa-facebook"></i>  
-                <i class="fa-brands fa-linkedin"></i> 
-                <i class="fab fa-github"></i>
-            </div>
-           <div class="form-end">
-            <a href="#" class="ah">Why Create an account?</a>
-            <button id="signButton" onclick="goBack()">Sign up</button>
-           </div>
-          </div>
-        </form>
-    </div>
-    <script src="./script.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyB__ON6fLbemYMn56Madp3J0M7-Lo03U2M",
+            authDomain: "login-auth-32c41.firebaseapp.com",
+            projectId: "login-auth-32c41",
+            storageBucket: "login-auth-32c41.firebasestorage.app",
+            messagingSenderId: "784923065748",
+            appId: "1:784923065748:web:f825c8ccc152aa24612381",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+
+        const form = document.getElementById("loginForm");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const emailError = document.getElementById("emailError");
+        const pwdError = document.getElementById("pwdError");
+        const loader = document.getElementById("loader");
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            emailError.textContent = "";
+            pwdError.textContent = "";
+
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            if (!email) {
+                emailError.textContent = "Email is required.";
+                return;
+            }
+
+            if (!password) {
+                pwdError.textContent = "Password is required.";
+                return;
+            }
+
+            loader.style.display = "block";
+
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                alert("Login successful!");
+                window.location.href = "./user.html";
+            } catch (error) {
+                loader.style.display = "none";
+                if (error.code === "auth/user-not-found") {
+                    emailError.textContent = "No user found with this email.";
+                } else if (error.code === "auth/wrong-password") {
+                    pwdError.textContent = "Incorrect password.";
+                } else {
+                    alert("Login failed. Please try again.");
+                }
+            }
+        });
+    </script>
 </body>
 </html>
