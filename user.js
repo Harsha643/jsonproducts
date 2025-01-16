@@ -2,7 +2,7 @@
 // Fetch and display product data
 async function getData() {
     let loader=document.getElementById("loader")
-    // let notavailable=document.getElementById('notavailable')
+ 
 
     try {
         let response = await fetch("https://brick-tourmaline-case.glitch.me/products");
@@ -12,9 +12,9 @@ async function getData() {
         if (products.length === 0) {
             // No data available
             loader.style.display = 'none';
-            // notavailable.style.display = 'block';
+          
         } else {
-            document.getElementById('notavailable').style.display = 'none';
+            // document.getElementById('notavailable').style.display = 'none';
             displayData(products);
          
         }
@@ -25,7 +25,7 @@ async function getData() {
 
 // Display products
 function displayData(products) {
-    // document.getElementById('notavailable').style.display = 'none';
+  
     setTimeout(()=>{
         document.querySelector(".loader").style.display = 'none';
         products.forEach((product) => {
@@ -43,9 +43,9 @@ function displayData(products) {
        
             container.appendChild(item);
     })
-    },3000);
-}
+    },1000);
 
+}
 
 let cart = []; // To store cart items
 // Add to cart
